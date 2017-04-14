@@ -1,0 +1,26 @@
+@import "{}/imports/scss/header.scss";
+@import "{}/imports/scss/sidebar.scss";
+
+
+body {
+  
+}
+ 
+.container {
+  display: grid;
+  // grid-template-columns: repeat(12, 8);
+  grid-template-columns: 20% 80%;
+  grid-auto-rows: minmax(100px, auto);
+}
+
+.Sidebar {
+  background: gray;
+  grid-column: 1;
+  grid-row: 1/8;
+}
+
+.Header {
+  background: blue;
+  grid-column: 2;
+  grid-row: 1;
+}
