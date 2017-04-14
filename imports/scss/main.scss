@@ -1,26 +1,119 @@
-@import "{}/imports/scss/header.scss";
-@import "{}/imports/scss/sidebar.scss";
-
-
 body {
-  
+  margin: 0;
 }
- 
+
 .container {
   display: grid;
-  // grid-template-columns: repeat(12, 8);
-  grid-template-columns: 20% 80%;
-  grid-auto-rows: minmax(100px, auto);
+  grid-template-columns: repeat(12, 8);
+  grid-auto-rows: minmax(50px, auto);
 }
 
 .Sidebar {
-  background: gray;
-  grid-column: 1;
-  grid-row: 1/8;
+  display: grid;
+  grid-column: 1/ span 2;
+  grid-row: 2/3;
+
+
+  @media (min-width: 750px) {
+    min-height: 100vh;
+    grid-column: 1/3;
+    grid-row: 1/ span 3;
+  }
+
+  .head {
+    background: #3a3a3a;
+    grid-row: 1/2;
+    img {
+      display: block;
+      margin: 20px auto;
+    }
+  }
+  .react-datepicker__input-container {
+    margin: 0 auto;
+    display: block;
+    input {
+      width: 120px;
+      text-align: center;
+      margin: 0 auto;
+      display: block;
+      background: #2D9CBF;
+      color: #383838;
+      border: none;
+      padding: 6px 0;
+      font-weight: bold;
+      font-size: 16px;
+    }
+  }
+  .body {
+    background: #2d2d2d;
+    grid-row: 2/ 20;
+    ul {
+      padding: 0;
+      margin: 0;
+      li {
+        color: #fff;
+        a {
+          &.current {
+            background: #212121;
+            color: #2D9CBF;
+            .notification-bubble:not(:empty) {
+              border: 1px solid #2D9CBF;
+              color: #2D9CBF;
+            }
+          }
+          text-decoration: none;
+          padding: 15px 0;
+          color: #fff;
+          width: 100%;
+          font-size: 20px;
+          font-family: 'Segoe UI';
+          font-weight: 500;
+          display: grid;
+          grid-auto-rows: minmax(auto, auto);
+          grid-template-columns: 20% 55% 15% 10%;
+        }
+        .fa {
+          grid-row: 1;
+          line-height: 26px;
+          padding-left: 20px;
+        }
+        .link-title {
+          grid-row: 1;
+        }
+        .notification-bubble {
+          grid-row: 1;
+          padding: 2px;
+          text-align: center;
+          border-radius: 4px;
+          &:not(:empty) {
+            border: 1px solid #fff;
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
 }
 
 .Header {
-  background: blue;
-  grid-column: 2;
-  grid-row: 1;
+  padding: 20px;
+  grid-column: 1/ span 2;
+  grid-row: 1/2;
+  @media (min-width: 750px) {
+    grid-column: 3/12;
+    grid-row: 1;
+  }
+  #login-buttons {
+    float: right;
+    position: relative;
+    top: 30%;
+    transform: translateY(-50%);
+  }
+}
+
+.page-container {
+  grid-column: 3/12;
+  padding: 25px;
+  box-sizing: border-box;
+  height: 100vh;
 }

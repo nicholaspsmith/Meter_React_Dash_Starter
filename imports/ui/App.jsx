@@ -3,29 +3,54 @@ import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom'
  
 import AccountsUIWrapper from './AccountsUIWrapper.jsx';
 import Sidebar from './Sidebar.jsx';
 import Header from './Header.jsx';
 
 // To import a collection
-// import { Collection } from '../api/collection.js';
+import { Collection } from '../api/collection.js';
+
+class Home extends Component {
+  render() {
+    return (
+      <div className="page-container">
+        You are Home
+      </div>
+    )
+  }
+}
+
+class About extends Component {
+  render() {
+    return (
+      <div className="page-container">
+        This is the about page...
+      </div>
+    )
+  }
+}
+
 
 class App extends Component {
  
   render() {
     return (
-      <div className="container">
-        <div className="Sidebar">
-          <div className="head">
-            <img src="http://placehold.it/100x100" alt="Logo"/>
+      <Router>
+        <div className="container">
+          <Sidebar />
+          <div className="Header">
+            <AccountsUIWrapper />
           </div>
-          <div className="body"></div>
+          <Route exact path="/" component={Home}/>
+          <Route exact path="/about" component={About}/>
         </div>
-        <div className="Header">
-          <AccountsUIWrapper />
-        </div>
-      </div>
+      </Router>
     );
   }
 }
@@ -37,6 +62,9 @@ App.propTypes = {
 };
  
 export default createContainer(() => {
+  // To subscribe to your collection
+  // Meteor.subscribe('collection');
+
   return {
     // to use a collection as a prop (this.props.collection)
     // collection: Collection.find({}).fetch(),
